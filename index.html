@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brightloop Subscription Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-logo"><i class="bi bi-infinity"></i></span>
+      <div>
+        <div class="brand-name">Brightloop</div>
+        <div class="brand-sub">Subscription Manager</div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main navigation">
+      <button class="nav-item active" data-nav="dashboard"><i class="bi bi-grid-1x2"></i><span>Dashboard</span></button>
+      <button class="nav-item" data-nav="customers"><i class="bi bi-people"></i><span>Customers</span></button>
+      <button class="nav-item" data-nav="products"><i class="bi bi-box-seam"></i><span>Products</span></button>
+      <button class="nav-item" data-nav="plans"><i class="bi bi-layers"></i><span>Subscription Plans</span></button>
+      <button class="nav-item" data-nav="subscriptions"><i class="bi bi-arrow-repeat"></i><span>Subscriptions</span></button>
+      <button class="nav-item" data-nav="quotations"><i class="bi bi-file-earmark-text"></i><span>Quotations</span></button>
+      <button class="nav-item" data-nav="invoices"><i class="bi bi-receipt"></i><span>Invoices</span></button>
+      <button class="nav-item" data-nav="payments"><i class="bi bi-credit-card"></i><span>Payments</span></button>
+      <button class="nav-item" data-nav="reports"><i class="bi bi-bar-chart-line"></i><span>Reports</span></button>
+      <button class="nav-item" data-nav="settings"><i class="bi bi-gear"></i><span>Settings</span></button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="demo-chip"><i class="bi bi-info-circle"></i> Demo mode &middot; sample data</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu"><i class="bi bi-list"></i></button>
+
+      <div class="welcome">
+        <h1 id="pageTitle">Welcome back, Aarav</h1>
+        <p id="pageSub">Here is what is happening with your subscriptions today.</p>
+      </div>
+
+      <div class="search">
+        <i class="bi bi-search"></i>
+        <input type="search" id="searchInput" placeholder="Search tables on this page..." aria-label="Search">
+      </div>
+
+      <!-- Notifications -->
+      <div class="dropdown" id="notifDropdown">
+        <button class="icon-btn" id="notifBtn" aria-label="Notifications" aria-expanded="false">
+          <i class="bi bi-bell"></i>
+          <span class="dot" id="notifDot"></span>
+        </button>
+        <div class="menu notif-menu" id="notifMenu">
+          <div class="menu-head">
+            <strong>Notifications</strong>
+            <button class="link-btn" id="markAllRead">Mark all as read</button>
+          </div>
+          <div id="notifList"></div>
+        </div>
+      </div>
+
+      <!-- Profile -->
+      <div class="dropdown" id="profileDropdown">
+        <button class="profile-btn" id="profileBtn" aria-expanded="false">
+          <span class="avatar">AM</span>
+          <span class="profile-text">
+            <strong>Aarav Menon</strong>
+            <small>Admin</small>
+          </span>
+          <i class="bi bi-chevron-down"></i>
+        </button>
+        <div class="menu profile-menu" id="profileMenu">
+          <div class="menu-head"><div><strong>Aarav Menon</strong><br><small>aarav@brightloop.demo</small></div></div>
+          <button class="menu-item" data-action="profile"><i class="bi bi-person"></i> My Profile</button>
+          <button class="menu-item" data-nav="settings"><i class="bi bi-gear"></i> Settings</button>
+          <button class="menu-item" data-nav="payments"><i class="bi bi-credit-card"></i> Billing</button>
+          <button class="menu-item danger" data-action="signout"><i class="bi bi-box-arrow-right"></i> Sign out</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="demo-banner">
+        <i class="bi bi-exclamation-circle"></i>
+        <span><strong>Demonstration data.</strong> All customers, amounts and records shown here are fictional sample data created for this hackathon demo.</span>
+      </div>
+
+      <!-- DASHBOARD PAGE -->
+      <section id="page-dashboard" class="page">
+        <div class="page-actions">
+          <button class="btn btn-primary" data-action="new-subscription"><i class="bi bi-plus-lg"></i> New Subscription</button>
+          <button class="btn btn-light" data-action="export-subscriptions"><i class="bi bi-download"></i> Export CSV</button>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="card kpi">
+            <div class="kpi-icon purple"><i class="bi bi-people"></i></div>
+            <div><span class="kpi-label">Total Customers</span><strong class="kpi-value">1,250</strong><small class="kpi-trend up"><i class="bi bi-arrow-up-short"></i>4.2% this month</small></div>
+          </div>
+          <div class="card kpi">
+            <div class="kpi-icon blue"><i class="bi bi-arrow-repeat"></i></div>
+            <div><span class="kpi-label">Active Subscriptions</span><strong class="kpi-value">846</strong><small class="kpi-trend up"><i class="bi bi-arrow-up-short"></i>2.8% this month</small></div>
+          </div>
+          <div class="card kpi">
+            <div class="kpi-icon green"><i class="bi bi-currency-rupee"></i></div>
+            <div><span class="kpi-label">Monthly Recurring Revenue</span><strong class="kpi-value">₹8,45,000</strong><small class="kpi-trend up"><i class="bi bi-arrow-up-short"></i>3.0% this month</small></div>
+          </div>
+          <div class="card kpi">
+            <div class="kpi-icon orange"><i class="bi bi-receipt"></i></div>
+            <div><span class="kpi-label">Outstanding Invoices</span><strong class="kpi-value">₹1,25,000</strong><small class="kpi-trend down"><i class="bi bi-arrow-down-short"></i>1.5% vs last month</small></div>
+          </div>
+        </div>
+
+        <div class="chart-grid">
+          <div class="card">
+            <div class="card-head"><h2>Monthly Revenue</h2><span class="muted">Last 12 months (demo)</span></div>
+            <div class="chart-box"><canvas id="revenueChart"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2>Subscription Status</h2><span class="muted">Demo split</span></div>
+            <div class="chart-box"><canvas id="statusChart"></canvas></div>
+          </div>
+        </div>
+
+        <div class="table-grid">
+          <div class="card">
+            <div class="card-head">
+              <h2>Recent Subscriptions</h2>
+              <button class="link-btn" data-nav="subscriptions">View all</button>
+            </div>
+            <div class="table-wrap" id="recentSubs"></div>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <h2>Recent Payments</h2>
+              <button class="link-btn" data-nav="payments">View all</button>
+            </div>
+            <div class="table-wrap" id="recentPays"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GENERIC PAGE (filled by script.js for every other menu item) -->
+      <section id="page-generic" class="page" hidden></section>
+    </main>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-backdrop" id="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="card-head">
+        <h2 id="modalTitle">Add new</h2>
+        <button class="icon-btn" id="modalClose" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <form id="modalForm">
+        <div id="modalFields" class="form-grid"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-light" id="modalCancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
